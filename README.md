@@ -7,6 +7,12 @@ Author: Kristov Atlas
 
 This can be used by engineers to detect regular expressions of concern in git repositories, such as the introduction of unsafe function usage.
 
+Monitoring will typically involve the following phases:
+
+1. Adding a new search term to the config file.
+2. Training: review results of new search term, exclude findings you've reviewed from future searches.
+3. Monitoring: Continue to run this program intermittently to identify new search results.
+
 ## Setup
 
 1. Modify ```git-mointor.cfg``` (use ```git-monitor-example.cfg``` as a reference).

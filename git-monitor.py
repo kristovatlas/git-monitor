@@ -133,7 +133,8 @@ def get_search_criteria(config, section_name):
 		s.case_sensitive == True # False by default in class
 	
 	#split list as string into actual list
-	s.exclude_these_file_extensions = exclude_these_file_extensions_list.split(',')
+	if (is_not_blank_or_whitespace(exclude_these_file_extensions_list)):
+		s.exclude_these_file_extensions = exclude_these_file_extensions_list.split(',')
 	
 	return s
 
@@ -250,7 +251,7 @@ for section_name in config.sections():
 for s in searches:
 	result_lines = get_search_results(s, file_extension_exclusions, commit_hash_exclusions)
 	if (result_lines != None and len(result_lines) != 0):
-		print("Found matches for search criteria labeled '%s':" % s.label)
+		print("Found %d matches for search criteria labeled '%s':" % (len(result_lines), s.label))
 		for line in result_lines:
 			print("\t" + line)
 	else:
