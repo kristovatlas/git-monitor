@@ -1,5 +1,5 @@
 # git-monitor
-Monitor git repositories for the presence of configurable substrings
+Monitor git repositories for the presence of configurable substrings. This will search all branches and all past history of each git repository.
 
 Author: Kristov Atlas
 
@@ -15,6 +15,9 @@ This can be used by engineers to detect regular expressions of concern in git re
 
 ## TODOs:
 
-  * Add option to automatically update git project first (git pull)
-  * Add option to send email alert when new search results found
-  * Allow search to apply only to specific extensions (whitelist), e.g. search only for "strcpy" in ".c" files.
+  * (High priority) Add option to automatically update git project first (git pull)
+  * (High priority) Add option to send email alert when new search results found
+  * (Medium priority) Allow search to apply only to specific extensions (whitelist), e.g. search only for "strcpy" in ".c" files.
+  * (Low priority) Add option to specify or exclude specific repository branches
+  * (Low priority) Move TODOs to GitHub issues
+  * (Low priority) Add unit testing
