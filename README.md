@@ -22,6 +22,8 @@ Monitoring will typically involve the following phases:
 
   * (High priority) Add option to automatically update git project first (git pull)
   * (High priority) Add option to send email alert when new search results found
+  * (High priority) Improve ability to input commits hashes to ignore and annotate with explantion for exclusion
+  * (Medium priority) Publish list of common security-sensitive strings to match and/or for various common libraries
   * (Medium priority) Allow search to apply only to specific extensions (whitelist), e.g. search only for "strcpy" in ".c" files.
   * (Low priority) Add option to specify or exclude specific repository branches
   * (Low priority) Move TODOs to GitHub issues
