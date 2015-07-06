@@ -16,7 +16,6 @@ Monitoring will typically involve the following phases:
 ## Setup
 
 1. Modify ```git-mointor.cfg``` (use ```git-monitor-example.cfg``` as a reference).
-
 2. Execute: ```python git-monitor.py```.
 
 ## TODOs:
