@@ -19,7 +19,6 @@ import datetime		# Timestamp
 # GLOBAL VARIABLES #
 ####################
 
-PRINT_DEBUG = False
 config_filename = 'git-monitor.cfg'
 
 ###########
@@ -212,12 +211,16 @@ except ConfigParser.Error:
 
 config.read(config_filename)
 
+PRINT_DEBUG = False # Print DEBUG statements or not? (overridden by config file)
+
 searches = [] #list of SearchCriteria objs
 file_extension_exclusions = [] #list of strings
 commit_hash_exclusions = [] #list of strings
 
 for section_name in config.sections():
-	if section_name[0:7] == 'search:':
+	if section_name == 'Global':
+		PRINT_DEBUG = string2bool(config.get('Global','PRINT_DEBUG'))
+	elif section_name[0:7] == 'search:':
 		s = get_search_criteria(config, section_name)
 		dprint("Appending this search criteria: %s" % s)
 		searches.append(s)
