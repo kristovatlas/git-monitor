@@ -9,6 +9,6 @@ This can be used by engineers to detect regular expressions of concern in git re
 
 ## Setup
 
-1. Modify ```git-mointor.cfg``` (use git-monitor-example.cfg as a reference).
+1. Modify ```git-mointor.cfg``` (use ```git-monitor-example.cfg``` as a reference).
 
 2. Execute: ```python git-monitor.py```.
