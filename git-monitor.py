@@ -1,10 +1,6 @@
 '''
 Author: Kristov Atlas <firstname lastname @ gmail.com>
 Description: This script will look for user-configurable substrings in git projects' commit histories. It can be run on-demand or as a scheduled job.
-
-TODOs:
-	* Add option to automatically update git project first (git pull)
-	* Add option to send email alert when new search results found
 '''
 
 ###########

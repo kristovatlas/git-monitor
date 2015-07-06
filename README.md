@@ -12,3 +12,9 @@ This can be used by engineers to detect regular expressions of concern in git re
 1. Modify ```git-mointor.cfg``` (use ```git-monitor-example.cfg``` as a reference).
 
 2. Execute: ```python git-monitor.py```.
+
+## TODOs:
+
+  * Add option to automatically update git project first (git pull)
+  * Add option to send email alert when new search results found
+  * Allow search to apply only to specific extensions (whitelist), e.g. search only for "strcpy" in ".c" files.
