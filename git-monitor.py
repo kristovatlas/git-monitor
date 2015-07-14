@@ -224,25 +224,21 @@ for section_name in config.sections():
 	elif section_name[0:7] == 'search:':
 		s = get_search_criteria(config, section_name)
 		dprint("Appending this search criteria: %s" % s)
-		searches.append(s)
-		
-	elif section_name == "Exclusions":
-		#read in exclusions
+		searches.append(s)	
+	elif section_name == 'Excluded Filetypes':
+		#read in file types to exclude from search results always
 		name_value_pairs = config.items(section_name)
 		for name, value in name_value_pairs:
-			if (name == 'always_ignore_these_filetypes'):
-				if (is_not_blank_or_whitespace(value)):
-					dprint("always_ignore_these_filetypes = '%s'" % value)
-					#config file defines one or more filetype to ignore
-					file_extension_exclusions = value.split(',')
-					dprint("Added %d file extensions to ignore always: %s" % (len(file_extension_exclusions), value))
-			elif (name == 'always_ignore_these_commits'):
-				if (is_not_blank_or_whitespace(value)):
-					#config file defines one or more commits to ignore
-					commit_hash_exclusions = value.split(',')
-					dprint("Added %d commits to ignore always: %s" % (len(commit_hash_exclusions), value))
-			else:
-				sys.exit("Invalid configuration syntax '%s' under section '%s' in '%s'. Please fix." % (name, section_name, config_filename))
+			#only interested in the name
+			file_extension_exclusions.append(name)
+		dprint("Added %d file extension(s) to ignore always: %s" % (len(file_extension_exclusions), file_extension_exclusions))
+	elif section_name == 'Excluded Commits':
+		#read in commits to exclude from search results always
+		name_value_pairs = config.items(section_name)
+		for name, value in name_value_pairs:
+			#only interested in the name
+			commit_hash_exclusions.append(name)
+		dprint("Added %d commit(s) to ignore always: %s" % (len(commit_hash_exclusions), commit_hash_exclusions))		
 	else:
 		sys.exit("Found invalid section name '%s' in configuration file '%s'. Please fix the configuration file." % (section_name, config_filename))
 
