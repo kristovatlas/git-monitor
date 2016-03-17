@@ -1,2 +1,8 @@
+#my personal config file
 git-monitor.cfg
+
+#generated output files
 *.html
+
+#compiled python files
+*.pyc
