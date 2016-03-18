@@ -120,9 +120,9 @@ def grep_git_command(git_command, grep_command):
     return output.split("\n")
 
 def run_search_command_added_only(regex, case_sensitive):
-    """Search git logs for the specified regex.
+    """Search git logs for commits that add the specified regex to the code.
 
-    TODO: wtf is 'added only'? I made this term up and forgot what it means
+    This will only include the branch currently selected by git.
 
     Runs:
     `git log --format=format:%H -S expression [-i] | xargs git grep [-i] expression`
@@ -140,6 +140,9 @@ def run_search_command_added_only(regex, case_sensitive):
 
 def run_search_command_all(regex, case_sensitive):
     """Search a list of git commits for specified regex.
+
+    This will include everyone commit in the entire git history, in which the
+    specified expression is present, across all branches in the repository.
 
     Runs:
     `git rev-list --all | xargs git grep [-i] expression`
