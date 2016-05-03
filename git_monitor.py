@@ -92,8 +92,8 @@ def run_search(regex, git_project_location, case_sensitive):
     #run the git log search and return the results
     if const.detect_pattern is 'all':
         return run_search_command_all(regex, case_sensitive)
-    elif const.detect_pattern is 'added_only':
-        return run_search_command_added_only(regex, case_sensitive)
+    elif const.detect_pattern is 'added_only_master':
+        return run_search_command_added_only_master(regex, case_sensitive)
     else:
         sys.exit("Invalid value for DETECT_PATTERN option.")
 
@@ -119,7 +119,7 @@ def grep_git_command(git_command, grep_command):
            (str(git_command) + str(grep_command), output, err))
     return output.split("\n")
 
-def run_search_command_added_only(regex, case_sensitive):
+def run_search_command_added_only_master(regex, case_sensitive):
     """Search git logs for commits that add the specified regex to the code.
 
     This will only include the branch currently selected by git.
@@ -285,7 +285,7 @@ def set_globals_from_config():
     Defaults:
         print_debug: False (can be set to True)
         output_format: plaintext (can be set to 'HTML')
-        detect_pattern: all (can be set to 'added_only')
+        detect_pattern: all (can be set to 'added_only_master')
 
     Returns:
         A tuple of (searches, file_extension_exclusions, commit_hash_exclusions)
@@ -313,8 +313,8 @@ def set_globals_from_config():
             const.print_debug = string2bool(config.get('Global', 'PRINT_DEBUG'))
             if config.get('Global', 'OUTPUT_FORMAT') == 'HTML':
                 const.output_format = 'HTML'
-            if config.get('Global', 'DETECT_PATTERN') == 'added_only':
-                const.detect_pattern = 'added_only'
+            if config.get('Global', 'DETECT_PATTERN') == 'added_only_master':
+                const.detect_pattern = 'added_only_master'
         elif section_name[0:7] == 'search:':
             search_crit = get_search_criteria(config, section_name)
             dprint("Appending this search criteria: %s" % search_crit)
